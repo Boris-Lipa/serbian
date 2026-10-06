@@ -126,6 +126,7 @@ export default function Home() {
   const [sentence, setSentence] = useState<string[]>([]);
   const [sentenceChecked, setSentenceChecked] = useState<AnswerState>("idle");
   const [dialogueAnswer, setDialogueAnswer] = useState<AnswerState>("idle");
+  const [visibleTranslations, setVisibleTranslations] = useState<Set<string>>(() => new Set());
   const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
   const [startedLessonId, setStartedLessonId] = useState<string | null>(null);
   const [learnerName, setLearnerName] = useState("");
@@ -176,6 +177,16 @@ export default function Home() {
     setSentence([]);
     setSentenceChecked("idle");
     setDialogueAnswer("idle");
+    setVisibleTranslations(new Set());
+  }
+
+  function toggleTranslation(translationId: string) {
+    setVisibleTranslations((current) => {
+      const next = new Set(current);
+      if (next.has(translationId)) next.delete(translationId);
+      else next.add(translationId);
+      return next;
+    });
   }
 
   function canOpenLesson(lesson: FoundationLesson) {
@@ -390,7 +401,12 @@ export default function Home() {
                     {activeLesson.phrases.map((phrase, index) => (
                       <article className="phrase-card" key={phrase.serbian}>
                         <button className="sound-button" onClick={() => speak(phrase.serbian)} aria-label={`Play ${phrase.serbian}`}><Icon name="sound" /></button>
-                        <div className="phrase-copy"><div className="serbian-line"><strong>{phrase.serbian}</strong></div><span className="translation">{phrase.english}</span><p>{phrase.note}</p></div>
+                        <div className="phrase-copy">
+                          <div className="serbian-line"><strong>{phrase.serbian}</strong></div>
+                          <button className="translation-toggle" onClick={() => toggleTranslation(`phrase-${activeLesson.id}-${index}`)} aria-expanded={visibleTranslations.has(`phrase-${activeLesson.id}-${index}`)}>{visibleTranslations.has(`phrase-${activeLesson.id}-${index}`) ? "Hide English" : "Show English"}</button>
+                          {visibleTranslations.has(`phrase-${activeLesson.id}-${index}`) && <span className="translation">{phrase.english}</span>}
+                          <p>{phrase.note}</p>
+                        </div>
                         <span className="phrase-number">{String(index + 1).padStart(2, "0")}</span>
                       </article>
                     ))}
@@ -461,9 +477,9 @@ export default function Home() {
                 <section className="lesson-card dialogue-step">
                   <span className="lesson-kicker">PUT IT TOGETHER</span><div className="question-count">3 of 3</div>
                   <h1>Use it in a short conversation</h1><p className="lead">{activeLesson.dialogue.speaker} says the line below. Choose the response that fits.</p>
-                  <div className="dialogue"><div className="dialogue-avatar">{activeLesson.dialogue.avatar}</div><div className="dialogue-bubble"><button onClick={() => speak(activeLesson.dialogue.line)} aria-label="Play dialogue"><Icon name="sound" /></button><strong>{activeLesson.dialogue.line}</strong><span>{activeLesson.dialogue.translation}</span></div></div>
+                  <div className="dialogue"><div className="dialogue-avatar">{activeLesson.dialogue.avatar}</div><div className="dialogue-bubble"><button className="dialogue-sound-button" onClick={() => speak(activeLesson.dialogue.line)} aria-label="Play dialogue"><Icon name="sound" /></button><strong>{activeLesson.dialogue.line}</strong><button className="translation-toggle" onClick={() => toggleTranslation(`dialogue-${activeLesson.id}`)} aria-expanded={visibleTranslations.has(`dialogue-${activeLesson.id}`)}>{visibleTranslations.has(`dialogue-${activeLesson.id}`) ? "Hide English" : "Show English"}</button>{visibleTranslations.has(`dialogue-${activeLesson.id}`) && <span className="translation">{activeLesson.dialogue.translation}</span>}</div></div>
                   <div className="dialogue-options">
-                    {activeLesson.dialogue.options.map((option) => { const correct = option.serbian === activeLesson.dialogue.answer; const state = dialogueAnswer !== "idle" && correct ? "correct" : dialogueAnswer === "wrong" && !correct ? "wrong" : ""; return <button key={option.serbian} className={state} onClick={() => setDialogueAnswer(correct ? "correct" : "wrong")}><span>{option.serbian}</span><small>{option.english}</small>{dialogueAnswer !== "idle" && correct && <Icon name="check" />}</button>; })}
+                    {activeLesson.dialogue.options.map((option, index) => { const correct = option.serbian === activeLesson.dialogue.answer; const state = dialogueAnswer !== "idle" && correct ? "correct" : dialogueAnswer === "wrong" && !correct ? "wrong" : ""; const translationId = `dialogue-option-${activeLesson.id}-${index}`; const translationVisible = visibleTranslations.has(translationId); return <div key={option.serbian} className={`dialogue-option ${state}`}><button className="dialogue-answer" onClick={() => setDialogueAnswer(correct ? "correct" : "wrong")}><span>{option.serbian}</span>{dialogueAnswer !== "idle" && correct && <Icon name="check" />}</button><button className="translation-toggle compact" onClick={() => toggleTranslation(translationId)} aria-expanded={translationVisible}>{translationVisible ? "Hide English" : "Show English"}</button>{translationVisible && <small className="option-translation">{option.english}</small>}</div>; })}
                   </div>
                   {dialogueAnswer !== "idle" && <div className={`feedback ${dialogueAnswer}`}><strong>{dialogueAnswer === "correct" ? "Savršeno! Perfect." : "That phrase does not answer the question yet."}</strong><p>{dialogueAnswer === "correct" ? activeLesson.dialogue.feedback : "Listen to the prompt once more, then choose a reply that directly fits it."}</p></div>}
                   <button className="primary-button wide" disabled={dialogueAnswer !== "correct"} onClick={completeLesson}>Finish lesson <span>→</span></button>

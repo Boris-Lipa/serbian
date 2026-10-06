@@ -200,7 +200,9 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
 .phrase-copy { min-width: 0; }
 .serbian-line { display: flex; align-items: baseline; gap: 10px; }
 .serbian-line strong { font: 600 22px Georgia, serif; }
-.translation { color: var(--coral); font-size: 14px; font-weight: 700; }
+.translation { display: block; margin-top: 4px; color: var(--coral); font-size: 14px; font-weight: 700; }
+.translation-toggle { width: max-content; margin-top: 5px; padding: 2px 6px; border: 1px solid #cfd8d2; border-radius: 4px; background: #fff; color: var(--green); font-size: 11px; font-weight: 750; cursor: pointer; }
+.translation-toggle:hover { border-color: #98afa4; background: var(--green-pale); }
 .phrase-copy p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
 .phrase-number { color: #c5c7c2; font: 16px Georgia, serif; }
 .culture-tip, .grammar-note { margin-top: 16px; padding: 13px 15px; border-left: 3px solid var(--gold); background: #fbf4e4; }
@@ -230,8 +232,8 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
 .answer-grid { display: grid; gap: 10px; margin-top: 28px; }
 .answer-option { min-height: 61px; display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 13px; padding: 10px 14px; border: 1px solid #d9dad4; border-radius: 8px; background: white; text-align: left; cursor: pointer; }
 .answer-option:hover { border-color: #a7b7b0; }
-.answer-option.correct, .dialogue-options button.correct, .sentence-dropzone.correct { border-color: #6fa08e; background: #e8f2ed; }
-.answer-option.wrong, .dialogue-options button.wrong, .sentence-dropzone.wrong { border-color: #d88772; background: #fff0eb; }
+.answer-option.correct, .dialogue-option.correct, .sentence-dropzone.correct { border-color: #6fa08e; background: #e8f2ed; }
+.answer-option.wrong, .dialogue-option.wrong, .sentence-dropzone.wrong { border-color: #d88772; background: #fff0eb; }
 .answer-letter { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid #d8d9d3; border-radius: 6px; color: var(--muted); font-size: 13px; }
 .answer-option strong { font: 600 19px Georgia, serif; }
 .answer-option .icon { color: var(--green); }
@@ -261,14 +263,17 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
 .dialogue { display: flex; gap: 12px; align-items: flex-end; margin-top: 28px; }
 .dialogue-avatar { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: white; font: 700 18px Georgia, serif; }
 .dialogue-bubble { position: relative; display: flex; flex-direction: column; width: 100%; padding: 17px 48px 17px 20px; border-radius: 11px 11px 11px 2px; background: #e8eee9; }
-.dialogue-bubble > button { position: absolute; right: 12px; top: 13px; width: 27px; height: 27px; display: grid; place-items: center; border: 0; border-radius: 50%; background: white; color: var(--green); cursor: pointer; }
+.dialogue-sound-button { position: absolute; right: 12px; top: 13px; width: 27px; height: 27px; display: grid; place-items: center; border: 0; border-radius: 50%; background: white; color: var(--green); cursor: pointer; }
 .dialogue-bubble strong { font: 600 19px/1.4 Georgia, serif; }
-.dialogue-bubble > span { margin-top: 5px; color: var(--coral); font-size: 13px; font-weight: 700; }
+.dialogue-bubble .translation-toggle { margin-top: 8px; }
+.dialogue-bubble .translation { font-size: 13px; }
 .dialogue-options { display: grid; gap: 9px; margin-top: 20px; }
-.dialogue-options button { min-height: 54px; position: relative; display: flex; flex-direction: column; justify-content: center; padding: 10px 45px 10px 15px; border: 1px solid var(--line); border-radius: 8px; background: white; text-align: left; cursor: pointer; }
-.dialogue-options button > span, .dialogue-options button:not(:has(> span)) { font: 600 18px Georgia, serif; }
-.dialogue-options button small { color: var(--muted); font: 13px Inter, sans-serif; margin-top: 4px; }
-.dialogue-options .icon { position: absolute; right: 15px; color: var(--green); }
+.dialogue-option { display: grid; grid-template-columns: 1fr auto; align-items: center; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.dialogue-answer { min-height: 54px; position: relative; display: flex; align-items: center; padding: 10px 45px 10px 15px; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.dialogue-answer > span { font: 600 18px Georgia, serif; }
+.dialogue-answer .icon { position: absolute; right: 15px; color: var(--green); }
+.dialogue-option .translation-toggle { margin: 0 12px 0 0; }
+.option-translation { grid-column: 1 / -1; margin: -2px 15px 11px; color: var(--muted); font: 13px Inter, sans-serif; }
 
 .completion-step { text-align: center; }
 .completion-badge { width: 80px; height: 80px; margin: 0 auto 24px; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: white; box-shadow: 0 0 0 12px var(--green-pale); }
