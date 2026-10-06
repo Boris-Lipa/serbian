@@ -320,7 +320,7 @@ export default function Home() {
             </section>
 
             <section className="course-roadmap current-stage" aria-labelledby="current-stage-title">
-              <div><span className="eyebrow">CURRENT STAGE</span><h2 id="current-stage-title">Serbian foundations</h2><p>Six connected units build the language needed for a calm first conversation: who you are, what you need, the people around you, and practical personal details.</p></div>
+              <div><span className="eyebrow">CURRENT STAGE</span><h2 id="current-stage-title">Serbian foundations</h2><p>Twelve connected units build the language needed for everyday A1 conversations: personal details, routines, practical needs, directions, preferences, and guided small talk.</p></div>
               <div className="roadmap-list">
                 {courseLessons.map((lesson) => <div key={lesson.id}><span>{String(lesson.unit).padStart(2, "0")}</span><p><strong>{lesson.pathTitle}</strong><small>{lesson.description}</small></p></div>)}
               </div>
@@ -346,7 +346,7 @@ export default function Home() {
           <div className="page lessons-page">
             <div className="page-heading">
               <div><span className="eyebrow">YOUR PATH</span><h1>From first words to real conversations</h1><p>Complete each unit in order. Every lesson prepares the language you need for the next one.</p></div>
-              <span className="path-duration">6 foundation lessons</span>
+              <span className="path-duration">12 foundation lessons</span>
             </div>
             <div className="learning-path">
               {courseLessons.map((lesson) => {

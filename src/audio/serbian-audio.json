@@ -240,6 +240,213 @@
         { "text": "pet." }
       ],
       "file": "nula-jedan-dva-tri-cetiri-pet.mp3"
+    },
+    {
+      "id": "zivim-u-beogradu",
+      "text": "Živim u Beogradu.",
+      "file": "zivim-u-beogradu.mp3"
+    },
+    {
+      "id": "radim-od-kuce",
+      "text": "Radim od kuće.",
+      "file": "radim-od-kuce.mp3"
+    },
+    {
+      "id": "ucim-srpski",
+      "text": "Učim srpski.",
+      "file": "ucim-srpski.mp3"
+    },
+    {
+      "id": "volim-muziku",
+      "text": "Volim muziku.",
+      "file": "volim-muziku.mp3"
+    },
+    {
+      "id": "sta-radis",
+      "text": "Šta radiš?",
+      "file": "sta-radis.mp3"
+    },
+    {
+      "id": "zivim-u-beogradu-i-ucim-srpski",
+      "text": "Živim u Beogradu i učim srpski.",
+      "parts": [
+        { "text": "Živim u Beogradu", "pauseAfterMs": 180 },
+        { "text": "i učim srpski." }
+      ],
+      "file": "zivim-u-beogradu-i-ucim-srpski.mp3"
+    },
+    {
+      "id": "danas-je-ponedeljak",
+      "text": "Danas je ponedeljak.",
+      "file": "danas-je-ponedeljak.mp3"
+    },
+    {
+      "id": "kada-radis",
+      "text": "Kada radiš?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "kada-radis.mp3"
+    },
+    {
+      "id": "radim-u-devet",
+      "text": "Radim u devet.",
+      "file": "radim-u-devet.mp3"
+    },
+    {
+      "id": "u-osam-sati",
+      "text": "U osam sati.",
+      "file": "u-osam-sati.mp3"
+    },
+    {
+      "id": "danas-radim-u-devet",
+      "text": "Danas radim u devet.",
+      "file": "danas-radim-u-devet.mp3"
+    },
+    {
+      "id": "jednu-kafu-molim",
+      "text": "Jednu kafu, molim.",
+      "parts": [
+        { "text": "Jednu kafu,", "pauseAfterMs": 170 },
+        { "text": "molim." }
+      ],
+      "file": "jednu-kafu-molim.mp3"
+    },
+    {
+      "id": "vodu-molim",
+      "text": "Vodu, molim.",
+      "parts": [
+        { "text": "Vodu,", "pauseAfterMs": 170 },
+        { "text": "molim." }
+      ],
+      "file": "vodu-molim.mp3"
+    },
+    {
+      "id": "racun-molim",
+      "text": "Račun, molim.",
+      "parts": [
+        { "text": "Račun,", "pauseAfterMs": 170 },
+        { "text": "molim." }
+      ],
+      "file": "racun-molim.mp3"
+    },
+    {
+      "id": "sta-zelite",
+      "text": "Šta želite?",
+      "file": "sta-zelite.mp3"
+    },
+    {
+      "id": "gde-je-toalet",
+      "text": "Gde je toalet?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "gde-je-toalet.mp3"
+    },
+    {
+      "id": "toalet-je-levo",
+      "text": "Toalet je levo.",
+      "file": "toalet-je-levo.mp3"
+    },
+    {
+      "id": "pravo",
+      "text": "Pravo.",
+      "file": "pravo.mp3"
+    },
+    {
+      "id": "blizu-je",
+      "text": "Blizu je.",
+      "file": "blizu-je.mp3"
+    },
+    {
+      "id": "pravo-pa-levo",
+      "text": "Pravo, pa levo.",
+      "parts": [
+        { "text": "Pravo,", "pauseAfterMs": 180 },
+        { "text": "pa levo." }
+      ],
+      "file": "pravo-pa-levo.mp3"
+    },
+    {
+      "id": "volim-filmove",
+      "text": "Volim filmove.",
+      "file": "volim-filmove.mp3"
+    },
+    {
+      "id": "ne-volim-kafu",
+      "text": "Ne volim kafu.",
+      "file": "ne-volim-kafu.mp3"
+    },
+    {
+      "id": "hoces-da-idemo",
+      "text": "Hoćeš da idemo?",
+      "file": "hoces-da-idemo.mp3"
+    },
+    {
+      "id": "mozemo-sutra",
+      "text": "Možemo sutra.",
+      "file": "mozemo-sutra.mp3"
+    },
+    {
+      "id": "hoces-da-idemo-u-bioskop",
+      "text": "Hoćeš da idemo u bioskop?",
+      "file": "hoces-da-idemo-u-bioskop.mp3"
+    },
+    {
+      "id": "da-mozemo-sutra",
+      "text": "Da, možemo sutra.",
+      "parts": [
+        { "text": "Da,", "pauseAfterMs": 160 },
+        { "text": "možemo sutra." }
+      ],
+      "file": "da-mozemo-sutra.mp3"
+    },
+    {
+      "id": "volim-filmove-mozemo-sutra",
+      "text": "Volim filmove. Možemo sutra.",
+      "parts": [
+        { "text": "Volim filmove.", "pauseAfterMs": 260 },
+        { "text": "Možemo sutra." }
+      ],
+      "file": "volim-filmove-mozemo-sutra.mp3"
+    },
+    {
+      "id": "zdravo-ja-sam-emma",
+      "text": "Zdravo, ja sam Emma.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "parts": [
+        { "text": "Zdravo,", "pauseAfterMs": 160 },
+        { "text": "ja sam Emma." }
+      ],
+      "file": "zdravo-ja-sam-emma.mp3"
+    },
+    {
+      "id": "zdravo-ja-sam-nikola-drago-mi-je",
+      "text": "Zdravo! Ja sam Nikola. Drago mi je.",
+      "parts": [
+        { "text": "Zdravo!", "pauseAfterMs": 220 },
+        { "text": "Ja sam Nikola.", "pauseAfterMs": 260 },
+        { "text": "Drago mi je." }
+      ],
+      "file": "zdravo-ja-sam-nikola-drago-mi-je.mp3"
+    },
+    {
+      "id": "zdravo-ja-sam-emma-drago-mi-je",
+      "text": "Zdravo, ja sam Emma. Drago mi je.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "parts": [
+        { "text": "Zdravo,", "pauseAfterMs": 160 },
+        { "text": "ja sam Emma.", "pauseAfterMs": 260 },
+        { "text": "Drago mi je." }
+      ],
+      "file": "zdravo-ja-sam-emma-drago-mi-je.mp3"
+    },
+    {
+      "id": "zdravo-ja-sam-emma-zivim-u-beogradu",
+      "text": "Zdravo, ja sam Emma. Živim u Beogradu.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "parts": [
+        { "text": "Zdravo,", "pauseAfterMs": 160 },
+        { "text": "ja sam Emma.", "pauseAfterMs": 260 },
+        { "text": "Živim u Beogradu." }
+      ],
+      "file": "zdravo-ja-sam-emma-zivim-u-beogradu.mp3"
     }
   ]
 }
