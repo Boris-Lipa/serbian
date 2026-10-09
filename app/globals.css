@@ -292,6 +292,27 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
 
 /* Phrasebook */
 .phrasebook-page { max-width: 960px; }
+.progress-page { max-width: 960px; }
+.progress-summary { margin-top: 28px; padding: 28px 30px; display: grid; grid-template-columns: 1fr auto; gap: 20px 36px; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+.progress-summary h2 { margin: 6px 0 8px; font: 500 25px Georgia, serif; }
+.progress-summary p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.progress-total { min-width: 104px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 10px; background: var(--green-pale); color: var(--green); }
+.progress-total strong { font: 600 30px Georgia, serif; }
+.progress-total span { margin-top: 2px; font-size: 12px; font-weight: 750; }
+.progress-summary-track { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+.progress-summary-track small { color: var(--muted); font-size: 13px; }
+.progress-band-list { margin-top: 22px; display: grid; gap: 12px; }
+.progress-band { padding: 21px 23px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 18px; row-gap: 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.level-tag { min-width: 43px; padding: 7px 6px; border-radius: 6px; background: var(--green-pale); color: var(--green); text-align: center; font-size: 13px; font-weight: 850; letter-spacing: .05em; }
+.progress-band-copy h2 { margin: 0 0 4px; font: 600 20px Georgia, serif; }
+.progress-band-copy p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.progress-band-status { display: flex; flex-direction: column; align-items: flex-end; }
+.progress-band-status strong { color: var(--green); font-size: 15px; }
+.progress-band-status small { margin-top: 3px; color: var(--muted); font-size: 12px; }
+.progress-band > .progress-track { grid-column: 2 / -1; }
+.progress-band.upcoming { background: #faf9f5; }
+.progress-band.upcoming .level-tag { background: #eceae4; color: #7e8781; }
+.progress-band.upcoming .progress-band-status strong { color: #7e8781; }
 .phrasebook-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 15px 18px; border: 1px solid var(--line); border-radius: 9px 9px 0 0; background: #fff; }
 .phrasebook-toolbar label { flex: 1; display: flex; align-items: center; gap: 10px; }
 .phrasebook-toolbar input { width: 100%; border: 0; background: transparent; color: var(--ink); font-size: 15px; }
@@ -307,6 +328,10 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
 .phrasebook-list article small { margin-top: 3px; color: #929892; font-size: 12px; font-weight: 700; }
 .phrasebook-list article p { color: var(--muted); font-size: 15px; }
 .phrasebook-list .sound-button { width: 32px; height: 32px; }
+.phrasebook-list .locked-phrase { background: #f7f6f1; }
+.locked-phrase .locked-phrase-copy strong { color: #aeb4ae; letter-spacing: .12em; filter: blur(2px); user-select: none; }
+.locked-phrase-message { color: #7e8781; }
+.locked-phrase-icon { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: #eceae4; color: #848c86; }
 .empty-state { padding: 40px; text-align: center; color: var(--muted); font-size: 15px; }
 .prototype-note { margin-top: 20px; padding: 18px 20px; display: flex; flex-direction: column; border-left: 3px solid var(--gold); background: #fff7e6; }
 .prototype-note strong { font-size: 15px; }
@@ -342,7 +367,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
   .mobile-header { height: 62px; padding: 0 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); background: #fdfbf6; }
   .brand.compact { padding: 0; }
   .brand.compact .brand-mark { width: 32px; height: 35px; }
-  .mobile-nav { height: 64px; position: fixed; inset: auto 0 0; z-index: 50; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); background: rgba(253,251,246,.96); backdrop-filter: blur(12px); }
+  .mobile-nav { height: 64px; position: fixed; inset: auto 0 0; z-index: 50; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: rgba(253,251,246,.96); backdrop-filter: blur(12px); }
   .mobile-nav button { border: 0; background: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #7c8581; font-size: 12px; }
   .mobile-nav button.active { color: var(--green); }
   .mobile-nav .icon { transform: scale(.88); }
@@ -380,6 +405,12 @@ button:focus-visible, input:focus-visible { outline: 3px solid rgba(233, 109, 79
   .answer-option small { grid-column: 2; }
   .earned-row div { padding: 12px 6px; }
   .phrasebook-list header, .phrasebook-list article { grid-template-columns: 1.2fr 1fr 38px; gap: 10px; padding-inline: 13px; }
+  .progress-summary { padding: 24px 20px; grid-template-columns: 1fr; }
+  .progress-total { width: 100%; min-height: 64px; flex-direction: row; gap: 8px; }
+  .progress-summary-track { grid-column: auto; }
+  .progress-band { padding: 18px 16px; grid-template-columns: auto 1fr; gap: 12px; }
+  .progress-band-status { grid-column: 2; align-items: flex-start; }
+  .progress-band > .progress-track { grid-column: 1 / -1; }
   .course-roadmap { padding: 24px 20px; }
   .roadmap-list { grid-template-columns: 1fr; }
   .number-grid { grid-template-columns: repeat(4, 1fr); }

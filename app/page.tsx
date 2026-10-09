@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { foundationLessons, nextCourseStage, type FoundationLesson } from "../src/course/foundations";
 import { playSerbianAudio } from "../src/audio/playSerbianAudio";
 
-type View = "home" | "lessons" | "lesson" | "phrasebook";
+type View = "home" | "lessons" | "lesson" | "phrasebook" | "progress";
 type AnswerState = "idle" | "correct" | "wrong";
 
 const learnerNameKey = "samo-polako-learner-name";
@@ -82,6 +82,12 @@ const firstLesson: FoundationLesson = {
 };
 
 const courseLessons = [firstLesson, ...foundationLessons];
+
+const courseBands = [
+  { level: "A1", name: "Foundations", from: 1, to: 24, description: "Personal details, everyday needs, routines, errands, and guided conversations.", available: true },
+  { level: "A2", name: "Everyday independence", from: 25, to: 48, description: "Travel, shopping, work, local life, and longer everyday exchanges.", available: false },
+  { level: "B1", name: "Confident conversation", from: 49, to: 72, description: "Opinions, stories, plans, and longer real-world listening and speaking.", available: false },
+];
 
 function speak(text: string) {
   playSerbianAudio(text);
@@ -166,20 +172,27 @@ export default function Home() {
     ? startedLesson
     : lastCompletedLesson ?? firstLesson;
 
+  const phrasebookEntries = useMemo(() => courseLessons.flatMap((lesson) => {
+    const unlocked = completedLessonIds.includes(lesson.id) || (startedLessonId === lesson.id && step >= 1);
+    return lesson.phrases.map((phrase) => ({ ...phrase, unit: lesson.unit, unlocked }));
+  }), [completedLessonIds, startedLessonId, step]);
+
   const randomizedPhrases = useMemo(() => {
-    const phrases = courseLessons.flatMap((lesson) => lesson.phrases.map((phrase) => ({ ...phrase, unit: lesson.unit })));
-    for (let index = phrases.length - 1; index > 0; index -= 1) {
+    const unlocked = phrasebookEntries.filter((phrase) => phrase.unlocked);
+    const locked = phrasebookEntries.filter((phrase) => !phrase.unlocked).sort((left, right) => left.unit - right.unit);
+    for (let index = unlocked.length - 1; index > 0; index -= 1) {
       const swapIndex = Math.floor(Math.random() * (index + 1));
-      [phrases[index], phrases[swapIndex]] = [phrases[swapIndex], phrases[index]];
+      [unlocked[index], unlocked[swapIndex]] = [unlocked[swapIndex], unlocked[index]];
     }
-    return phrases;
-  }, [phrasebookVisit]);
+    return [...unlocked, ...locked];
+  }, [phrasebookEntries, phrasebookVisit]);
 
   const filteredPhrases = useMemo(() => {
     const needle = query.trim().toLowerCase();
     if (!needle) return randomizedPhrases;
-    return randomizedPhrases.filter((phrase) => `${phrase.serbian} ${phrase.english}`.toLowerCase().includes(needle));
+    return randomizedPhrases.filter((phrase) => phrase.unlocked && `${phrase.serbian} ${phrase.english}`.toLowerCase().includes(needle));
   }, [query, randomizedPhrases]);
+  const unlockedPhraseCount = phrasebookEntries.filter((phrase) => phrase.unlocked).length;
 
   function resetStepState() {
     setAnswer("idle");
@@ -261,13 +274,14 @@ export default function Home() {
   const homeLessonProgress = homeLessonComplete ? 100 : homeLessonStarted ? ((step + 1) / 6) * 100 : 0;
   const homeLessonAction = homeLessonComplete ? "Review lesson" : homeLessonStarted ? "Continue lesson" : "Start lesson";
 
-  const navItems: { id: "home" | "lessons" | "phrasebook"; label: string; icon: "home" | "book" | "chat" }[] = [
+  const navItems: { id: "home" | "lessons" | "phrasebook" | "progress"; label: string; icon: "home" | "book" | "chat" | "chart" }[] = [
     { id: "home", label: "Home", icon: "home" },
     { id: "lessons", label: "Lessons", icon: "book" },
     { id: "phrasebook", label: "Phrasebook", icon: "chat" },
+    { id: "progress", label: "Progress", icon: "chart" },
   ];
 
-  function handleNavigation(item: "home" | "lessons" | "phrasebook") {
+  function handleNavigation(item: "home" | "lessons" | "phrasebook" | "progress") {
     if (item === "phrasebook") {
       setPhrasebookVisit((current) => current + 1);
       setQuery("");
@@ -291,7 +305,6 @@ export default function Home() {
               {item.id === "lessons" && <span className="nav-count">{courseLessons.length}</span>}
             </button>
           ))}
-          <button className="nav-item" onClick={() => setView("home")}><Icon name="chart" />Progress</button>
         </nav>
 
         <div className="sidebar-course">
@@ -514,15 +527,57 @@ export default function Home() {
           </div>
         )}
 
+        {view === "progress" && (
+          <div className="page progress-page">
+            <div className="page-heading">
+              <div><span className="eyebrow">LEARNING OVERVIEW</span><h1>Your course progress</h1><p>Only available lessons count toward your progress. Future levels stay separate until they are added to the course.</p></div>
+              <span className="alphabet-label">Serbian Latin</span>
+            </div>
+
+            <section className="progress-summary" aria-label="Current Serbian foundations progress">
+              <div>
+                <span className="eyebrow">CURRENT COURSE</span>
+                <h2>Serbian foundations · A1</h2>
+                <p>{completedCount === 0 ? "Your first unit is ready when you are." : `${completedCount} of ${courseLessons.length} foundation lessons complete.`}</p>
+              </div>
+              <div className="progress-total"><strong>{courseProgress}%</strong><span>complete</span></div>
+              <div className="progress-summary-track"><div className="progress-track"><span style={{ width: `${courseProgress}%` }} /></div><small>{completedCount} / {courseLessons.length} lessons</small></div>
+            </section>
+
+            <section className="progress-band-list" aria-label="Course levels">
+              {courseBands.map((band) => {
+                const totalLessons = band.to - band.from + 1;
+                const completeLessons = band.available
+                  ? courseLessons.filter((lesson) => lesson.unit >= band.from && lesson.unit <= band.to && completedLessonIds.includes(lesson.id)).length
+                  : 0;
+                const percent = band.available ? Math.round((completeLessons / totalLessons) * 100) : 0;
+                return (
+                  <article className={`progress-band ${band.available ? "available" : "upcoming"}`} key={band.level}>
+                    <span className="level-tag">{band.level}</span>
+                    <div className="progress-band-copy"><h2>{band.name}</h2><p>{band.description}</p></div>
+                    <div className="progress-band-status">
+                      <strong>{band.available ? `${completeLessons} / ${totalLessons}` : "Planned"}</strong>
+                      <small>{band.available ? `${percent}% complete` : "Not counted yet"}</small>
+                    </div>
+                    <div className="progress-track" aria-label={band.available ? `${band.level}: ${percent}% complete` : `${band.level}: planned`}><span style={{ width: `${percent}%` }} /></div>
+                  </article>
+                );
+              })}
+            </section>
+
+            <div className="prototype-note"><strong>Progress is based on completed units.</strong><span>Reaching the phrase step unlocks its Phrasebook entries; completing the sixth step marks the entire unit complete here.</span></div>
+          </div>
+        )}
+
         {view === "phrasebook" && (
           <div className="page phrasebook-page">
             <div className="page-heading"><div><span className="eyebrow">QUICK REFERENCE</span><h1>Your phrasebook</h1><p>Useful Serbian in the same order it appears in the course.</p></div><span className="alphabet-label">Serbian Latin</span></div>
-            <div className="phrasebook-toolbar"><label><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search in English or Serbian…" /></label><span>{filteredPhrases.length} phrases</span></div>
+            <div className="phrasebook-toolbar"><label><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search in English or Serbian…" /></label><span>{query.trim() ? `${filteredPhrases.length} matching` : `${unlockedPhraseCount} of ${phrasebookEntries.length} unlocked`}</span></div>
             <section className="phrasebook-list"><header><span>SERBIAN</span><span>ENGLISH</span><span>LISTEN</span></header>
-              {filteredPhrases.map((phrase) => <article key={`${phrase.unit}-${phrase.serbian}`}><div><strong>{phrase.serbian}</strong><small>Unit {phrase.unit}</small></div><p>{phrase.english}</p><button className="sound-button" onClick={() => speak(phrase.serbian)} aria-label={`Play ${phrase.serbian}`}><Icon name="sound" /></button></article>)}
+              {filteredPhrases.map((phrase) => phrase.unlocked ? <article key={`${phrase.unit}-${phrase.serbian}`}><div><strong>{phrase.serbian}</strong><small>Unit {phrase.unit}</small></div><p>{phrase.english}</p><button className="sound-button" onClick={() => speak(phrase.serbian)} aria-label={`Play ${phrase.serbian}`}><Icon name="sound" /></button></article> : <article className="locked-phrase" key={`${phrase.unit}-${phrase.serbian}`}><div className="locked-phrase-copy"><strong>••••••••••</strong><small>Unit {phrase.unit}</small></div><p className="locked-phrase-message">Complete Unit {phrase.unit} to unlock this phrase.</p><span className="locked-phrase-icon" aria-label="Locked"><Icon name="lock" /></span></article>)}
               {filteredPhrases.length === 0 && <div className="empty-state">No phrases match that search yet.</div>}
             </section>
-            <div className="prototype-note"><strong>This phrasebook grows with the course.</strong><span>Every phrase here is taught in context first, so it is easier to remember when to use it.</span></div>
+            <div className="prototype-note"><strong>This phrasebook grows with the course.</strong><span>New phrases unlock when you reach their lesson’s useful-phrases step. Unlocked phrases are shuffled; locked ones stay at the bottom.</span></div>
           </div>
         )}
 
