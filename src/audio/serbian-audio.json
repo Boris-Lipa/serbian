@@ -447,6 +447,413 @@
         { "text": "Živim u Beogradu." }
       ],
       "file": "zdravo-ja-sam-emma-zivim-u-beogradu.mp3"
+    },
+    {
+      "id": "kako-se-prezivas",
+      "text": "Kako se prezivaš?",
+      "file": "kako-se-prezivas.mp3"
+    },
+    {
+      "id": "prezivam-se-smith",
+      "text": "Prezivam se Smith.",
+      "file": "prezivam-se-smith.mp3"
+    },
+    {
+      "id": "moja-adresa-je",
+      "text": "Moja adresa je...",
+      "synthesisText": "Moja adresa je.",
+      "file": "moja-adresa-je.mp3"
+    },
+    {
+      "id": "moj-broj-telefona-je",
+      "text": "Moj broj telefona je...",
+      "synthesisText": "Moj broj telefona je.",
+      "file": "moj-broj-telefona-je.mp3"
+    },
+    {
+      "id": "koliko-kosta",
+      "text": "Koliko košta?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "koliko-kosta.mp3"
+    },
+    {
+      "id": "kosta-petsto-dinara",
+      "text": "Košta petsto dinara.",
+      "file": "kosta-petsto-dinara.mp3"
+    },
+    {
+      "id": "preskupo-je",
+      "text": "Preskupo je.",
+      "file": "preskupo-je.mp3"
+    },
+    {
+      "id": "u-redu-je",
+      "text": "U redu je.",
+      "file": "u-redu-je.mp3"
+    },
+    {
+      "id": "koliko-kosta-kosta-petsto-dinara",
+      "text": "Koliko košta? Košta petsto dinara.",
+      "parts": [
+        { "text": "Koliko košta?", "pauseAfterMs": 260 },
+        { "text": "Košta petsto dinara." }
+      ],
+      "file": "koliko-kosta-kosta-petsto-dinara.mp3"
+    },
+    {
+      "id": "gde-je-autobuska-stanica",
+      "text": "Gde je autobuska stanica?",
+      "file": "gde-je-autobuska-stanica.mp3"
+    },
+    {
+      "id": "jednu-kartu-molim",
+      "text": "Jednu kartu, molim.",
+      "parts": [
+        { "text": "Jednu kartu,", "pauseAfterMs": 170 },
+        { "text": "molim." }
+      ],
+      "file": "jednu-kartu-molim.mp3"
+    },
+    {
+      "id": "kada-polazi-autobus",
+      "text": "Kada polazi autobus?",
+      "file": "kada-polazi-autobus.mp3"
+    },
+    {
+      "id": "autobus-polazi-u-deset",
+      "text": "Autobus polazi u deset.",
+      "file": "autobus-polazi-u-deset.mp3"
+    },
+    {
+      "id": "ovo-je-moj-stan",
+      "text": "Ovo je moj stan.",
+      "file": "ovo-je-moj-stan.mp3"
+    },
+    {
+      "id": "kuhinja-je-mala",
+      "text": "Kuhinja je mala.",
+      "file": "kuhinja-je-mala.mp3"
+    },
+    {
+      "id": "u-kupatilu-je-tus",
+      "text": "U kupatilu je tuš.",
+      "file": "u-kupatilu-je-tus.mp3"
+    },
+    {
+      "id": "imam-balkon",
+      "text": "Imam balkon.",
+      "file": "imam-balkon.mp3"
+    },
+    {
+      "id": "imas-li-balkon",
+      "text": "Imaš li balkon?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "imas-li-balkon.mp3"
+    },
+    {
+      "id": "da-imam-balkon",
+      "text": "Da, imam balkon.",
+      "parts": [
+        { "text": "Da,", "pauseAfterMs": 150 },
+        { "text": "imam balkon." }
+      ],
+      "file": "da-imam-balkon.mp3"
+    },
+    {
+      "id": "ovo-je-moj-stan-imam-balkon",
+      "text": "Ovo je moj stan. Imam balkon.",
+      "parts": [
+        { "text": "Ovo je moj stan.", "pauseAfterMs": 260 },
+        { "text": "Imam balkon." }
+      ],
+      "file": "ovo-je-moj-stan-imam-balkon.mp3"
+    },
+    {
+      "id": "moja-sestra-je-visoka",
+      "text": "Moja sestra je visoka.",
+      "file": "moja-sestra-je-visoka.mp3"
+    },
+    {
+      "id": "moj-brat-je-mlad",
+      "text": "Moj brat je mlad.",
+      "file": "moj-brat-je-mlad.mp3"
+    },
+    {
+      "id": "ima-plavu-kosu",
+      "text": "Ima plavu kosu.",
+      "file": "ima-plavu-kosu.mp3"
+    },
+    {
+      "id": "on-je-moj-prijatelj",
+      "text": "On je moj prijatelj.",
+      "file": "on-je-moj-prijatelj.mp3"
+    },
+    {
+      "id": "kakva-je-tvoja-sestra",
+      "text": "Kakva je tvoja sestra?",
+      "file": "kakva-je-tvoja-sestra.mp3"
+    },
+    {
+      "id": "visoka-je-i-mlada",
+      "text": "Visoka je i mlada.",
+      "file": "visoka-je-i-mlada.mp3"
+    },
+    {
+      "id": "danas-je-hladno",
+      "text": "Danas je hladno.",
+      "file": "danas-je-hladno.mp3"
+    },
+    {
+      "id": "pada-kisa",
+      "text": "Pada kiša.",
+      "file": "pada-kisa.mp3"
+    },
+    {
+      "id": "treba-mi-jakna",
+      "text": "Treba mi jakna.",
+      "file": "treba-mi-jakna.mp3"
+    },
+    {
+      "id": "suncano-je",
+      "text": "Sunčano je.",
+      "file": "suncano-je.mp3"
+    },
+    {
+      "id": "kakvo-je-vreme",
+      "text": "Kakvo je vreme?",
+      "file": "kakvo-je-vreme.mp3"
+    },
+    {
+      "id": "hladno-je",
+      "text": "Hladno je.",
+      "file": "hladno-je.mp3"
+    },
+    {
+      "id": "danas-je-hladno-treba-mi-jakna",
+      "text": "Danas je hladno. Treba mi jakna.",
+      "parts": [
+        { "text": "Danas je hladno.", "pauseAfterMs": 260 },
+        { "text": "Treba mi jakna." }
+      ],
+      "file": "danas-je-hladno-treba-mi-jakna.mp3"
+    },
+    {
+      "id": "ne-osecam-se-dobro",
+      "text": "Ne osećam se dobro.",
+      "file": "ne-osecam-se-dobro.mp3"
+    },
+    {
+      "id": "boli-me-glava",
+      "text": "Boli me glava.",
+      "file": "boli-me-glava.mp3"
+    },
+    {
+      "id": "gde-je-apoteka",
+      "text": "Gde je apoteka?",
+      "file": "gde-je-apoteka.mp3"
+    },
+    {
+      "id": "treba-mi-pomoc",
+      "text": "Treba mi pomoć.",
+      "file": "treba-mi-pomoc.mp3"
+    },
+    {
+      "id": "kako-se-osecas",
+      "text": "Kako se osećaš?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "kako-se-osecas.mp3"
+    },
+    {
+      "id": "kada-radi-banka",
+      "text": "Kada radi banka?",
+      "file": "kada-radi-banka.mp3"
+    },
+    {
+      "id": "banka-radi-do-cetiri",
+      "text": "Banka radi do četiri.",
+      "file": "banka-radi-do-cetiri.mp3"
+    },
+    {
+      "id": "da-li-je-posta-otvorena",
+      "text": "Da li je pošta otvorena?",
+      "file": "da-li-je-posta-otvorena.mp3"
+    },
+    {
+      "id": "zatvoreno-je",
+      "text": "Zatvoreno je.",
+      "file": "zatvoreno-je.mp3"
+    },
+    {
+      "id": "da-otvorena-je",
+      "text": "Da, otvorena je.",
+      "parts": [
+        { "text": "Da,", "pauseAfterMs": 150 },
+        { "text": "otvorena je." }
+      ],
+      "file": "da-otvorena-je.mp3"
+    },
+    {
+      "id": "juce-sam-bila-kod-kuce",
+      "text": "Juče sam bila kod kuće.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "juce-sam-bila-kod-kuce.mp3"
+    },
+    {
+      "id": "juce-sam-ucila-srpski",
+      "text": "Juče sam učila srpski.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "juce-sam-ucila-srpski.mp3"
+    },
+    {
+      "id": "bilo-je-lepo",
+      "text": "Bilo je lepo.",
+      "file": "bilo-je-lepo.mp3"
+    },
+    {
+      "id": "sta-si-radila",
+      "text": "Šta si radila?",
+      "file": "sta-si-radila.mp3"
+    },
+    {
+      "id": "sta-si-radila-juce",
+      "text": "Šta si radila juče?",
+      "file": "sta-si-radila-juce.mp3"
+    },
+    {
+      "id": "ucila-sam-srpski",
+      "text": "Učila sam srpski.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "ucila-sam-srpski.mp3"
+    },
+    {
+      "id": "sutra-cu-uciti-srpski",
+      "text": "Sutra ću učiti srpski.",
+      "file": "sutra-cu-uciti-srpski.mp3"
+    },
+    {
+      "id": "ici-cemo-u-grad",
+      "text": "Ići ćemo u grad.",
+      "file": "ici-cemo-u-grad.mp3"
+    },
+    {
+      "id": "hoces-li-doci",
+      "text": "Hoćeš li doći?",
+      "file": "hoces-li-doci.mp3"
+    },
+    {
+      "id": "vidimo-se-sutra",
+      "text": "Vidimo se sutra.",
+      "file": "vidimo-se-sutra.mp3"
+    },
+    {
+      "id": "hoces-li-doci-sutra",
+      "text": "Hoćeš li doći sutra?",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "file": "hoces-li-doci-sutra.mp3"
+    },
+    {
+      "id": "da-doci-cu",
+      "text": "Da, doći ću.",
+      "parts": [
+        { "text": "Da,", "pauseAfterMs": 150 },
+        { "text": "doći ću." }
+      ],
+      "file": "da-doci-cu.mp3"
+    },
+    {
+      "id": "volim-kafu-ali-ne-volim-caj",
+      "text": "Volim kafu, ali ne volim čaj.",
+      "parts": [
+        { "text": "Volim kafu,", "pauseAfterMs": 180 },
+        { "text": "ali ne volim čaj." }
+      ],
+      "file": "volim-kafu-ali-ne-volim-caj.mp3"
+    },
+    {
+      "id": "ucim-srpski-jer-zivim-u-beogradu",
+      "text": "Učim srpski jer živim u Beogradu.",
+      "file": "ucim-srpski-jer-zivim-u-beogradu.mp3"
+    },
+    {
+      "id": "prvo-radim-onda-ucim",
+      "text": "Prvo radim, onda učim.",
+      "parts": [
+        { "text": "Prvo radim,", "pauseAfterMs": 180 },
+        { "text": "onda učim." }
+      ],
+      "file": "prvo-radim-onda-ucim.mp3"
+    },
+    {
+      "id": "posle-idem-kuci",
+      "text": "Posle idem kući.",
+      "file": "posle-idem-kuci.mp3"
+    },
+    {
+      "id": "zasto-ucis-srpski",
+      "text": "Zašto učiš srpski?",
+      "file": "zasto-ucis-srpski.mp3"
+    },
+    {
+      "id": "jer-zivim-u-beogradu",
+      "text": "Jer živim u Beogradu.",
+      "file": "jer-zivim-u-beogradu.mp3"
+    },
+    {
+      "id": "zdravo-zovem-se-emma-i-zivim-u-beogradu",
+      "text": "Zdravo, zovem se Emma i živim u Beogradu.",
+      "voice": "sr-Latn-RS-SophieNeural",
+      "parts": [
+        { "text": "Zdravo,", "pauseAfterMs": 160 },
+        { "text": "zovem se Emma", "pauseAfterMs": 170 },
+        { "text": "i živim u Beogradu." }
+      ],
+      "file": "zdravo-zovem-se-emma-i-zivim-u-beogradu.mp3"
+    },
+    {
+      "id": "danas-radim-do-cetiri-ali-sutra-mogu",
+      "text": "Danas radim do četiri, ali sutra mogu.",
+      "parts": [
+        { "text": "Danas radim do četiri,", "pauseAfterMs": 190 },
+        { "text": "ali sutra mogu." }
+      ],
+      "file": "danas-radim-do-cetiri-ali-sutra-mogu.mp3"
+    },
+    {
+      "id": "ne-razumem-mozete-li-da-ponovite",
+      "text": "Ne razumem. Možete li da ponovite?",
+      "parts": [
+        { "text": "Ne razumem.", "pauseAfterMs": 280 },
+        { "text": "Možete li da ponovite?" }
+      ],
+      "file": "ne-razumem-mozete-li-da-ponovite.mp3"
+    },
+    {
+      "id": "zdravo-kako-si",
+      "text": "Zdravo! Kako si?",
+      "parts": [
+        { "text": "Zdravo!", "pauseAfterMs": 220 },
+        { "text": "Kako si?" }
+      ],
+      "file": "zdravo-kako-si.mp3"
+    },
+    {
+      "id": "dobro-sam-hvala-a-ti",
+      "text": "Dobro sam, hvala. A ti?",
+      "parts": [
+        { "text": "Dobro sam, hvala.", "pauseAfterMs": 250 },
+        { "text": "A ti?" }
+      ],
+      "file": "dobro-sam-hvala-a-ti.mp3"
+    },
+    {
+      "id": "zdravo-dobro-sam-hvala-vidimo-se-sutra",
+      "text": "Zdravo! Dobro sam, hvala. Vidimo se sutra.",
+      "parts": [
+        { "text": "Zdravo!", "pauseAfterMs": 210 },
+        { "text": "Dobro sam, hvala.", "pauseAfterMs": 250 },
+        { "text": "Vidimo se sutra." }
+      ],
+      "file": "zdravo-dobro-sam-hvala-vidimo-se-sutra.mp3"
     }
   ]
 }

@@ -133,6 +133,7 @@ export default function Home() {
   const [nameDraft, setNameDraft] = useState("");
   const [namePromptOpen, setNamePromptOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [phrasebookVisit, setPhrasebookVisit] = useState(0);
 
   useEffect(() => {
     const savedName = window.localStorage.getItem(learnerNameKey)?.trim() ?? "";
@@ -165,12 +166,20 @@ export default function Home() {
     ? startedLesson
     : lastCompletedLesson ?? firstLesson;
 
+  const randomizedPhrases = useMemo(() => {
+    const phrases = courseLessons.flatMap((lesson) => lesson.phrases.map((phrase) => ({ ...phrase, unit: lesson.unit })));
+    for (let index = phrases.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [phrases[index], phrases[swapIndex]] = [phrases[swapIndex], phrases[index]];
+    }
+    return phrases;
+  }, [phrasebookVisit]);
+
   const filteredPhrases = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    const phrases = courseLessons.flatMap((lesson) => lesson.phrases.map((phrase) => ({ ...phrase, unit: lesson.unit })));
-    if (!needle) return phrases;
-    return phrases.filter((phrase) => `${phrase.serbian} ${phrase.english}`.toLowerCase().includes(needle));
-  }, [query]);
+    if (!needle) return randomizedPhrases;
+    return randomizedPhrases.filter((phrase) => `${phrase.serbian} ${phrase.english}`.toLowerCase().includes(needle));
+  }, [query, randomizedPhrases]);
 
   function resetStepState() {
     setAnswer("idle");
@@ -259,6 +268,10 @@ export default function Home() {
   ];
 
   function handleNavigation(item: "home" | "lessons" | "phrasebook") {
+    if (item === "phrasebook") {
+      setPhrasebookVisit((current) => current + 1);
+      setQuery("");
+    }
     setView(item);
   }
 
@@ -320,7 +333,7 @@ export default function Home() {
             </section>
 
             <section className="course-roadmap current-stage" aria-labelledby="current-stage-title">
-              <div><span className="eyebrow">CURRENT STAGE</span><h2 id="current-stage-title">Serbian foundations</h2><p>Twelve connected units build the language needed for everyday A1 conversations: personal details, routines, practical needs, directions, preferences, and guided small talk.</p></div>
+              <div><span className="eyebrow">CURRENT STAGE</span><h2 id="current-stage-title">Serbian foundations</h2><p>Twenty-four connected units build the language needed for everyday A1 conversations: personal details, routines, practical needs, directions, preferences, and guided small talk.</p></div>
               <div className="roadmap-list">
                 {courseLessons.map((lesson) => <div key={lesson.id}><span>{String(lesson.unit).padStart(2, "0")}</span><p><strong>{lesson.pathTitle}</strong><small>{lesson.description}</small></p></div>)}
               </div>
@@ -346,7 +359,7 @@ export default function Home() {
           <div className="page lessons-page">
             <div className="page-heading">
               <div><span className="eyebrow">YOUR PATH</span><h1>From first words to real conversations</h1><p>Complete each unit in order. Every lesson prepares the language you need for the next one.</p></div>
-              <span className="path-duration">12 foundation lessons</span>
+              <span className="path-duration">24 foundation lessons</span>
             </div>
             <div className="learning-path">
               {courseLessons.map((lesson) => {
